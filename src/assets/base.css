@@ -1,0 +1,28 @@
+/* semantic color variables for this project */
+:root {
+  --color-background: #161617;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(235, 235, 235, 0.64);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  background: black;
+  transition:
+    color 0.5s,
+    background-color 0.5s;
+  line-height: 1.6;
+  font-family: 'Aboreto';
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
