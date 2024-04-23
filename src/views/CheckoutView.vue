@@ -12,17 +12,17 @@ let emailError = ref(false)
 let phoneNumberError = ref(false)
 let addressError = ref(false)
 
-function isEmailValid(email) {
+function isEmailValid(email: string) {
   const regex = new RegExp(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g)
   return !!regex.exec(email)
 }
 
-function isPhoneValid(phone) {
+function isPhoneValid(phone: string) {
   const regex = new RegExp(/^\d{9,13}/g)
   return !!regex.exec(phone ?? '')
 }
 
-function checkForm(e) {
+function checkForm(e: Event) {
   firstNameError.value = !firstName.value ? true : false
   lastNameError.value = !lastName.value ? true : false
   emailError.value = !isEmailValid(email.value) ? true : false
@@ -47,33 +47,39 @@ function checkForm(e) {
     <div class="title">Checkout</div>
     <form class="form" @submit="checkForm" action="/checkout-successful">
       <div class="form-text">
-        <label style="color: white">First name*:</label>
-        <label class="form-warning" v-show="firstNameError">⚠️ First name is required</label>
+        <label for="firstName" style="color: white">First name*:</label>
+        <label for="firstName" class="form-warning" v-show="firstNameError"
+          >⚠️ First name is required</label
+        >
       </div>
-      <input v-model="firstName" placeholder="First Name" />
+      <input id="firstName" v-model="firstName" placeholder="First Name" />
       <div class="form-text">
-        <label style="color: white">Last Name*:</label>
-        <label class="form-warning" v-show="lastNameError">⚠️ Last name is required</label>
+        <label for="lastName" style="color: white">Last Name*:</label>
+        <label for="lastName" class="form-warning" v-show="lastNameError"
+          >⚠️ Last name is required</label
+        >
       </div>
-      <input v-model="lastName" placeholder="Last Name" />
+      <input id="lastName" v-model="lastName" placeholder="Last Name" />
       <div class="form-text">
-        <label style="color: white">Email*:</label>
-        <label class="form-warning" v-show="emailError">⚠️ Invalid Email</label>
+        <label for="email" style="color: white">Email*:</label>
+        <label for="email" class="form-warning" v-show="emailError">⚠️ Invalid Email</label>
       </div>
-      <input v-model="email" placeholder="Email" />
+      <input id="email" v-model="email" placeholder="Email" autocomplete="off" />
       <div class="form-text">
-        <label style="color: white">Phone number*:</label>
-        <label class="form-warning" v-show="phoneNumberError">⚠️ Invalid phone number</label>
+        <label for="phoneNumber" style="color: white">Phone number*:</label>
+        <label for="phoneNumber" class="form-warning" v-show="phoneNumberError"
+          >⚠️ Invalid phone number</label
+        >
       </div>
-      <input v-model="phoneNumber" placeholder="Phone number" />
+      <input id="phoneNumber" v-model="phoneNumber" placeholder="Phone number" />
       <div class="form-text">
-        <label style="color: white">Address*:</label>
-        <label class="form-warning" v-show="addressError">⚠️ Invalid address</label>
+        <label for="address" style="color: white">Address*:</label>
+        <label for="address" class="form-warning" v-show="addressError">⚠️ Invalid address</label>
       </div>
-      <input v-model="address" placeholder="Address" />
+      <input id="address" v-model="address" placeholder="Address" autocomplete="off" />
       <div class="button-wrapper">
-        <input type="reset" value="Reset" />
-        <input type="submit" value="Submit" />
+        <input id="reset" type="reset" value="Reset" />
+        <input id="submit" type="submit" value="Submit" />
       </div>
     </form>
   </div>
