@@ -91,6 +91,7 @@ function checkForm(e: Event) {
   padding: 40px 48px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .title {
